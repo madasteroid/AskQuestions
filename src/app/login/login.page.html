@@ -1,0 +1,36 @@
+<ion-content>
+  <ion-card class="card ion-text-center" align-content-center>
+    <ion-card-header>
+      <ion-card-title>#AskQuestion</ion-card-title>
+      <img src="assets/img/logo.jpg" />
+    </ion-card-header>
+    <ion-card-subtitle>Please login to continue</ion-card-subtitle>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+      <ion-button
+        class="ion-margin"
+        expand="full"
+        size="default"
+        color="secondary"
+        (click)="login()"
+        >Login</ion-button
+      >
+      <ion-button
+        class="ion-margin"
+        expand="full"
+        size="default"
+        color="tertiary"
+        [routerLink]="['/register']"
+        >Register</ion-button
+      >
+    </ion-card-content>
+  </ion-card>
+</ion-content>

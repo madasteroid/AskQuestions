@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button color="light" [routerLink]="['/login']">
+      <ion-icon name="arrow-back"></ion-icon
+    ></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="card ion-text-center" align-content-center>
+    <ion-card-header>
+      <ion-card-title>Sign up</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Fullname</ion-label>
+        <ion-input type="text" [(ngModel)]=user.displayName></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Confirm Password</ion-label>
+        <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
+      </ion-item>
+      <ion-button
+        class="ion-margin"
+        expand="full"
+        size="default"
+        color="tertiary"
+        (click)="register()"
+        >Register</ion-button
+      >
+
+      <hr />
+
+      <ion-button class="ion-margin" expand="full" size="default" color="light">
+        <strong>
+          <ion-icon name="logo-googleplus"></ion-icon> Sign up with Google
+        </strong>
+      </ion-button>
+      <ion-button
+        class="ion-margin"
+        expand="full"
+        size="default"
+        color="primary"
+      >
+        <strong>
+          <ion-icon name="logo-facebook"></ion-icon>Sign up with
+          Facebook</strong
+        >
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

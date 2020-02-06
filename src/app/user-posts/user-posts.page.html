@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Your Questions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="ion-padding post-card">
+      <ion-textarea class="textarea" placeholder="Ask your questions here...." [(ngModel)]="newPost.question"></ion-textarea>
+      <ion-button class="ion-float-right" color="tertiary" (click)="postQuestion()">Ask it!</ion-button>
+    </ion-card>
+  
+    <div *ngFor="let post of posts">
+      <ion-card>
+        <ion-card-header class="ion-no-padding">
+          <ion-card-title class="title">
+            <div style="padding: 16px; display: inline-block;" >
+              {{post.username}}
+            </div>
+          <ion-buttons class="ion-float-right" *ngIf="post.userId === currentUserId">
+            <ion-button (click)="deleteQuestion(post)">
+                <ion-icon color="danger" name="close-circle"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="ion-no-padding">
+          <ion-grid>
+            <ion-row class="question-div">
+              <div>
+                <ion-label class="question-text">{{post.question}}</ion-label>
+              </div>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                  <ion-buttons class="ion-float-left ion-margin">
+                      <ion-button (click)="likeIt(post)">{{post.upVotes.length}}
+                        <div *ngIf="post.upVotes.includes(currentUserId); else default">
+                            <ion-icon color="primary" name="thumbs-up"></ion-icon>
+                        </div>
+                        <ng-template #default>
+                            <ion-icon color="light" name="thumbs-up"></ion-icon>
+                        </ng-template>
+                      </ion-button>
+                      <ion-button (click)="unlikeIt(post)">{{post.downVotes.length}}
+                        <div *ngIf="post.downVotes.includes(currentUserId); else defaultDownVote">
+                            <ion-icon color="danger" name="thumbs-down"></ion-icon>
+                        </div>
+                        <ng-template #defaultDownVote>
+                            <ion-icon color="light" name="thumbs-down"></ion-icon>
+                        </ng-template>
+                      </ion-button>
+                      <ion-button (click)="reply(post.id)">{{post.replies.length}}
+                        <ion-icon color="tertiary" name="md-repeat"></ion-icon>
+                      </ion-button>
+                    </ion-buttons>
+              </ion-col>
+              <ion-col class="ion-padding ion-justify-content-center">
+                <div class="date ion-margin-vertical">{{post.createdAt | date:"short"}}</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    
+</ion-content>

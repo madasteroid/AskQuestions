@@ -1,0 +1,25 @@
+.chatbox{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid lightgray;
+    border-radius: 3%;
+    height: 60px;
+}
+
+.date {
+    font-size: 10px;
+    margin: 0 25px 10px 25px;
+}
+
+.replies {
+    border-bottom: 1px solid #e9ebee;
+}
+
+.chip {
+    height: 100%;
+    width: 90%;
+    margin: 10px;
+    position: relative;
+    word-wrap: break-word;
+    overflow: visible;
+}

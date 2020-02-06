@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="tertiary" class="text-center">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngIf="post">
+      <ion-card-header>
+        <ion-card-title>
+          <span style="color: blue">Question:<br></span > 
+          <span style="font-size: 20px">{{post.question}}</span>
+         </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <div class="replies" *ngFor="let comment of post.replies">
+            <ion-row >
+              <ion-chip class="chip">
+                <ion-avatar style="height: 20px; width: 20px">
+                  <img src="../../assets/img/avatar.png" alt="Avatar">
+                </ion-avatar>
+                <ion-label>
+                  <span style="color:#385898">{{comment.username}}</span>: {{comment.text}}
+                </ion-label>
+              </ion-chip>
+            </ion-row>
+            <ion-row>
+              <div class="date">{{comment.createdAt | date: "short"}}</div>
+            </ion-row>
+          </div>
+
+          <ion-row class="chatbox">
+            <ion-col class="ion-no-padding" size="9">
+              <ion-textarea style="padding-left: 10px;" placeholder="Write a reply" [(ngModel)]="reply.text"></ion-textarea>
+            </ion-col>
+            <ion-col class="ion-no-padding ion-float-right" col="2">
+              <ion-button clear (click)="sendReply()" [disabled]="reply.text.length < 1">
+                <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+  <ion-footer>
+      
+    </ion-footer>
+</ion-content>

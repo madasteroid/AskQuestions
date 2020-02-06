@@ -1,0 +1,7 @@
+{
+  "name": "anyQuestion",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
